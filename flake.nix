@@ -9,9 +9,9 @@
 
     # Neovim nix configuration
     nixvim = {
-      url = "github:nix-community/nixvim";
+      # url = "github:nix-community/nixvim";
       # url = "git+file:///Users/khaneliman/Documents/github/nixvim";
-      # url = "git+file:///home/khaneliman/Documents/github/nixvim";
+      url = "git+file:///home/khaneliman/Documents/github/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

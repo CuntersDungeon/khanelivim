@@ -388,17 +388,17 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1724696912,
-        "narHash": "sha256-0J8dfnYisj0IJQ88XP1htjh6EoiM0YDphdB4a8FmAFE=",
-        "owner": "nix-community",
-        "repo": "nixvim",
-        "rev": "aa1f5a74ffa348d4cf4ffc32792b901a0699da00",
-        "type": "github"
+        "lastModified": 1724903393,
+        "narHash": "sha256-ZdUzGf1Fqsv5+hjAOLnai+N51+LuprTx3Y/irkH1PmQ=",
+        "ref": "refs/heads/lualine",
+        "rev": "e3c7081ea7996ce411fec27c24921e7dccc946ac",
+        "revCount": 1974,
+        "type": "git",
+        "url": "file:///home/khaneliman/Documents/github/nixvim"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "nixvim",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/khaneliman/Documents/github/nixvim"
       }
     },
     "nuschtosSearch": {

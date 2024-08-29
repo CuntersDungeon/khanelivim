@@ -14,71 +14,70 @@ let
   '';
 in
 {
-
   plugins.lualine = {
     enable = true;
 
-    disabledFiletypes = {
-      statusline = [
-        # "neo-tree"
-        "startify"
-      ];
-      winbar = [
-        "aerial"
-        "dap-repl"
-        "neo-tree"
-        "neotest-summary"
-        "startify"
-      ];
-    };
+    settings = {
+      disabled_filetypes = {
+        statusline = [
+          # "neo-tree"
+          "startify"
+        ];
+        winbar = [
+          "aerial"
+          "dap-repl"
+          "neo-tree"
+          "neotest-summary"
+          "startify"
+        ];
+      };
 
-    globalstatus = true;
+      globalstatus = true;
 
-    # +-------------------------------------------------+
-    # | A | B | C                             X | Y | Z |
-    # +-------------------------------------------------+
-    sections = {
-      lualine_a = [ "mode" ];
-      lualine_b = [ "branch" ];
-      lualine_c = [
-        "filename"
-        "diff"
-      ];
+      # +-------------------------------------------------+
+      # | A | B | C                             X | Y | Z |
+      # +-------------------------------------------------+
+      sections = {
+        lualine_a = [ "mode" ];
+        lualine_b = [ "branch" ];
+        lualine_c = [
+          "filename"
+          "diff"
+        ];
 
-      lualine_x = [
-        "diagnostics"
+        lualine_x = [
+          "diagnostics"
 
-        # Show active language server
-        {
-          name.__raw = ''
-            function()
-                local msg = ""
-                local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-                local clients = vim.lsp.get_active_clients()
-                if next(clients) == nil then
-                    return msg
-                end
-                for _, client in ipairs(clients) do
-                    local filetypes = client.config.filetypes
-                    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                        return client.name
-                    end
-                end
-                return msg
-            end
-          '';
-          icon = "";
-          color.fg = "#ffffff";
-        }
-        "encoding"
-        "fileformat"
-        "filetype"
-      ];
+          # Show active language server
+          {
+            __unkeyed-1.__raw = ''
+              function()
+                  local msg = ""
+                  local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+                  local clients = vim.lsp.get_active_clients()
+                  if next(clients) == nil then
+                      return msg
+                  end
+                  for _, client in ipairs(clients) do
+                      local filetypes = client.config.filetypes
+                      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                          return client.name
+                      end
+                  end
+                  return msg
+              end
+            '';
+            icon = "";
+            color.fg = "#ffffff";
+          }
+          "encoding"
+          "fileformat"
+          "filetype"
+        ];
 
-      lualine_y = [
-        {
-          name = "aerial";
-          extraConfig = {
+        lualine_y = [
+          {
+            __unkeyed-1 = "aerial";
             inherit cond;
 
             # -- The separator to be used to separate symbols in status line.
@@ -99,57 +98,47 @@ in
 
             # -- Color the symbol icons.
             colored = true;
-          };
-        }
-      ];
+          }
+        ];
 
-      lualine_z = [
-        {
-          name = "location";
-          extraConfig = {
+        lualine_z = [
+          {
+            __unkeyed-1 = "location";
             inherit cond;
-          };
-        }
-      ];
-    };
+          }
+        ];
+      };
 
-    tabline = mkIf (!config.plugins.bufferline.enable) {
-      lualine_a = [
-        # NOTE: not high priority since i use bufferline now, but should fix left separator color
-        {
-          name = "buffers";
-          extraConfig = {
+      tabline = mkIf (!config.plugins.bufferline.enable) {
+        lualine_a = [
+          {
+            __unkeyed-1 = "buffers";
             symbols = {
               alternate_file = "";
             };
-          };
-        }
-      ];
-      lualine_z = [ "tabs" ];
-    };
+          }
+        ];
+        lualine_z = [ "tabs" ];
+      };
 
-    winbar = {
-      lualine_c = [
-        {
-          name = "navic";
-          extraConfig = {
+      winbar = {
+        lualine_c = [
+          {
+            __unkeyed-1 = "navic";
             inherit cond;
-          };
-        }
-      ];
+          }
+        ];
 
-      # TODO: Need to dynamically hide/show component so navic takes precedence on smaller width
-      lualine_x = [
-        {
-          name = "filename";
-          extraConfig = {
+        lualine_x = [
+          {
+            __unkeyed-1 = "filename";
             newfile_status = true;
             path = 3;
             # Shorten path names to fit navic component
             shorting_target = 150;
-          };
-        }
-      ];
+          }
+        ];
+      };
     };
   };
 }
